@@ -29,12 +29,6 @@ def file_gen(rows, columns, num_range):
   COLUMNS = columns
   FLOAT_INT_RANGE = num_range
 
-  bool_text = ""
-  int_text = ""
-  float_text = ""
-  string_text = ""
-  random_text = ""
-
   def make_bool():
     return str(random.randint(0, 1))
 
@@ -60,11 +54,29 @@ def file_gen(rows, columns, num_range):
     else:
       return make_string()
 
+  BOOL_PATH = str(ROWS) + '_bool.txt'
+  INT_PATH = str(ROWS) + '_int.txt'
+  FLOAT_PATH = str(ROWS) + '_float.txt'
+  STRING_PATH = str(ROWS) + '_string.txt'
+  RANDOM_PATH = str(ROWS) + '_random.txt'
+
+  bool_file = open(BOOL_PATH, 'w')
+  int_file = open(INT_PATH, 'w')
+  float_file = open(FLOAT_PATH, 'w')
+  string_file = open(STRING_PATH, 'w')
+  random_file = open(RANDOM_PATH, 'w')
+
   # loop through rows
   for i in range(0, ROWS):
 
     # loop through columns
     for j in range(0, COLUMNS):
+
+      bool_text = ""
+      int_text = ""
+      float_text = ""
+      string_text = ""
+      random_text = ""
 
       # bool creation
       bool_text += "<" + make_bool() + ">"
@@ -88,22 +100,10 @@ def file_gen(rows, columns, num_range):
       string_text += end
       random_text += end
 
-  BOOL_PATH = str(ROWS) + '_bool.txt'
-  INT_PATH = str(ROWS) + '_int.txt'
-  FLOAT_PATH = str(ROWS) + '_float.txt'
-  STRING_PATH = str(ROWS) + '_string.txt'
-  RANDOM_PATH = str(ROWS) + '_random.txt'
-
-  bool_file = open(BOOL_PATH, 'w')
-  int_file = open(INT_PATH, 'w')
-  float_file = open(FLOAT_PATH, 'w')
-  string_file = open(STRING_PATH, 'w')
-  random_file = open(RANDOM_PATH, 'w')
-
-  bool_file.write(bool_text)
-  int_file.write(int_text)
-  float_file.write(float_text)
-  string_file.write(string_text)
-  random_file.write(random_text)
+      bool_file.write(bool_text)
+      int_file.write(int_text)
+      float_file.write(float_text)
+      string_file.write(string_text)
+      random_file.write(random_text)
 
 main()
